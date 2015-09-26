@@ -5,6 +5,7 @@ public class PlayerController : MonoBehaviour
 {
     PlayerChildController whitePlayer, blackPlayer;
     public float jumpForce;
+    public float restartDelay;
     // Use this for initialization
     void Start()
     {
@@ -25,5 +26,14 @@ public class PlayerController : MonoBehaviour
     public void OnObstacleHit()
     {
         Camera.main.GetComponent<MoveCamera>().speed = 0;
+        whitePlayer.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+        blackPlayer.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
+        StartCoroutine(RestartGame(restartDelay));
+    }
+
+    public IEnumerator RestartGame(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Application.LoadLevel(0); //restart level
     }
 }

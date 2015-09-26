@@ -21,7 +21,7 @@ public class LoseZoneController : MonoBehaviour
         Debug.Log("hit registered with " + collider.transform.tag);
         if (collider.transform.tag == "obstacle")
         {
-            
+            //transform.GetComponentInParent<SpriteRenderer>().color = Color.red;
             playerController.OnObstacleHit();
         }
     }
