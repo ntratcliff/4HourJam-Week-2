@@ -22,6 +22,8 @@ public class LoseZoneController : MonoBehaviour
         if (collider.transform.tag == "obstacle")
         {
             //transform.GetComponentInParent<SpriteRenderer>().color = Color.red;
+            //hacky lose state color show
+            gameObject.GetComponentsInChildren<SpriteRenderer>()[1].enabled = true;
             playerController.OnObstacleHit();
         }
     }
